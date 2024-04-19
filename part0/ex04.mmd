@@ -1,0 +1,18 @@
+sequenceDiagram
+    participant browser
+    participant server
+
+    browser->>server: POST https://studies.cs.helsinki.fi/exampleapp/new_note (new note in form data)
+    Note left of server: Server saves a new note in the database
+    server->>browser: 302 FOUND
+
+    browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/notes
+    server->>browser: 200 OK with HTML
+
+    browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/main.js
+    server->>browser: 200 OK with Javascript
+
+    browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/data.json
+    server->>browser: 200 OK with Note data 
+
+    Note right of browser: The browser renders the page again
